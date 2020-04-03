@@ -10,6 +10,6 @@ use Todo\Todo\Model\Category;
 $factory->define(Category::class, function (Generator $faker) {
     return [
         Category::ID_COLUMN => $faker->uuid,
-        Category::NAME_COLUMN => $faker->uuid
+        Category::NAME_COLUMN => $faker->uuid,
     ];
 });

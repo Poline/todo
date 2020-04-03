@@ -18,10 +18,24 @@ class DeleteCategoryEndPointTest extends TestCase
         $category2 = factory(Category::class)->create();
         $categoryId2 = $category2->id;
 
-
         $this->assertDatabaseHas('categories', [
             'id' => $categoryId1,
         ]);
+        $this->assertDatabaseHas('categories', [
+            'id' => $categoryId2,
+        ]);
 
+        $response = $this->delete(route('category-delete', ['categoryId' => $categoryId1]));
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseMissing('categories', [
+            'id' => $categoryId1,
+            'deleted_at' => null,
+        ]);
+        $this->assertDatabaseHas('categories', [
+            'id' => $categoryId2,
+            'deleted_at' => null,
+        ]);
     }
 }
