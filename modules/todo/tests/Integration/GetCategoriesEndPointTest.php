@@ -3,7 +3,6 @@
 namespace Todo\Todo\Tests\Integration;
 
 use Tests\TestCase;
-use Illuminate\Support\Arr;
 use Todo\Todo\Model\Category;
 
 class GetCategoriesEndPointTest extends TestCase

@@ -3,6 +3,7 @@
 namespace Todo\Todo\Http\Resources;
 
 use Illuminate\Http\Resources\Json\Resource;
+use Todo\Todo\DTO\CategoryDTO;
 
 /**
  * Class CategoryResource
@@ -12,12 +13,13 @@ use Illuminate\Http\Resources\Json\Resource;
  */
 class CategoryResource extends Resource
 {
+    /** @mixin CategoryDTO */
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'deleted_at' => $this->deleted_at,
+            'id' => $this->id(),
+            'name' => $this->name(),
+            'deleted_at' => $this->deleted_at(),
         ];
     }
 }
