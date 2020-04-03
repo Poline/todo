@@ -19,6 +19,9 @@ class GetCategoriesEndPointTest extends TestCase
         $response = $this->get(route('categories-get'));
 
         $response->assertStatus(200);
-        $this->assertCount(2, $response->json());
+
+        $data = $response->json()['data'];
+
+        $this->assertCount(2, $data);
     }
 }
